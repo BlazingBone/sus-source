@@ -49,7 +49,7 @@ const CommentsSection:React.FC<CommentsSectionProps> = ({comments, postId, setPo
             </div>
             <div className='overflow-y-scroll h-full scrollbar-hide'>
                 {comments.map((comment) => (
-                    <Comment comment={comment} />
+                    <Comment key={comment.commentId} comment={comment} />
                 ))}
             </div>
         </div>      

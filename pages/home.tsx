@@ -65,7 +65,7 @@ const Home:React.FC<homeProps> = () => {
         else if (!userAuth?.uid && loading === false){
             router.push("/login");
         }
-    }, [userAuth]);
+    }, [user]);
 
     useEffect(() => {
         if(user.nitroExpireDate){

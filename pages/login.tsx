@@ -13,7 +13,7 @@ type loginProps = {
     
 };
 
-const login:React.FC<loginProps> = () => {
+const Login:React.FC<loginProps> = () => {
     
     const [userAuth] = useAuthState(auth);
     const [email, setEmail] = useState("");
@@ -104,4 +104,4 @@ const login:React.FC<loginProps> = () => {
         </div>
     )
 }
-export default login;
+export default Login;

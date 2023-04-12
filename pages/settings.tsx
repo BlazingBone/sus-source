@@ -19,7 +19,7 @@ type settingsProps = {
     
 };
 
-const settings:React.FC<settingsProps> = () => {
+const Settings:React.FC<settingsProps> = () => {
     
     const [settingsMode, setSettingsMode] = useState("Account");
     const router = useRouter();
@@ -217,4 +217,4 @@ const settings:React.FC<settingsProps> = () => {
         </div>
     )
 }
-export default settings;
+export default Settings;

@@ -12,7 +12,7 @@ type registrationProps = {
     
 };
 
-const registration:React.FC<registrationProps> = () => {
+const Registration:React.FC<registrationProps> = () => {
     
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -90,4 +90,4 @@ const registration:React.FC<registrationProps> = () => {
         </div>
     )
 }
-export default registration;
+export default Registration;

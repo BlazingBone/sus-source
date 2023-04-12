@@ -22,7 +22,7 @@ type homeProps = {
     
 };
 
-const home:React.FC<homeProps> = () => {
+const Home:React.FC<homeProps> = () => {
 
     const [userAuth, loading, userError]  = useAuthState(auth);
     const {getUserInformation, removeNitro} = userHook();
@@ -211,4 +211,4 @@ const home:React.FC<homeProps> = () => {
     </div>
     )
 }
-export default home;
+export default Home;

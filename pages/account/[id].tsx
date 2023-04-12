@@ -17,7 +17,7 @@ type AccountProps = {
     
 };
 
-const account:React.FC<AccountProps> = () => {
+const Account:React.FC<AccountProps> = () => {
 
 
     const [userAuth, loading, error] = useAuthState(auth);
@@ -127,4 +127,4 @@ const account:React.FC<AccountProps> = () => {
     </div>
     )
 }
-export default account;
+export default Account;

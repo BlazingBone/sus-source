@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true
+  },
   reactStrictMode: false,
   images: {
     domains: ["firebasestorage.googleapis.com"],

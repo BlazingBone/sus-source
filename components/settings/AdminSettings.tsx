@@ -89,8 +89,8 @@ const AdminSettings:React.FC<AdminSettingsProps> = () => {
                     <p className='text-lg underline mt-2'>Posts from {selectedUser.username}:</p>
                     <div className='dark:bg-[#222222] w-full max-h-[40vh] overflow-y-scroll scrollbar-hide mt-5 rounded-lg'>
                         {posts.posts.map((post) => (
-                            <div onClick={() => setSelectedPost(post)} className={`${selectedPost === post.postId && "dark:bg-[#333333]"} dark:hover:bg-[#333333] cursor-pointer`}>
-                                <Post post={post} key={post.postId} />
+                            <div key={post.postId} onClick={() => setSelectedPost(post)} className={`${selectedPost === post.postId && "dark:bg-[#333333]"} dark:hover:bg-[#333333] cursor-pointer`}>
+                                <Post post={post} />
                             </div>
                         ))}
                     </div>

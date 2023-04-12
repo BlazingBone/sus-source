@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     domains: ["firebasestorage.googleapis.com"],
     remotePatterns: [
@@ -11,7 +11,7 @@ const nextConfig = {
         pathname: '/account123/**',
       },
     ],
-  }
+  },
 }
 
 module.exports = nextConfig

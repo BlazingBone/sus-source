@@ -17,6 +17,7 @@ import TopPostCart from '@/components/TopPostCart';
 import TopPostsSection from '@/components/TopPostsSection';
 import { Timestamp } from 'firebase/firestore';
 import Loader from '@/components/Loader';
+import Image from 'next/image';
  
 type homeProps = {
     
@@ -137,12 +138,12 @@ const Home:React.FC<homeProps> = () => {
     <div className="relative bg-neutral-300 dark:bg-[#121212]">
         <div className="flex border-b-[1px] border-neutral-900 border-opacity-10"> {/*<!--Head Bereich Anfang-->*/}
             <div className="h-0 lg:h-36 lg:w-80 lg:inline-block lg:pt-4 lg:justify-center border-r-2 border-opacity-10 border-neutral-700 lg:bg-transparent">{/*<!--Hintergrundfarbe ändern-->*/}
-                <img className="lg:inline-block lg:h-20 lg:w-auto lg:mt-5 lg:ml-7 h-0 w-0" src="./images/Logo/SUS-Logo.jpg" alt="" />
+                <img className="lg:inline-block lg:h-20 lg:w-auto lg:mt-5 lg:ml-7 h-0 w-0" src="/images/Logo/SUS-Logo.jpg" alt="" />
             </div> 
             <div className=" flex-1 inline-block w-36 bg-transparent min-w-[300px]">{/*<!--Hintergrundfarbe ändern-->*/}
                 <div className="flex">
                     <div className="h-40 inline-block bg-trasnparent">{/*<!--Hintergrundfarbe ändern-->*/}
-                        <img className="w-24 h-24 rounded-full object-cover mt-8 ml-5" src={user.profileImgUrl ? user.profileImgUrl : "/images/Profile Picture/Profile Picture.jpg"} alt="" /> {/*<!--Profilbild einfügen-->*/}
+                        <img className="w-24 h-24 rounded-full object-cover mt-8 ml-5"  src={user.profileImgUrl ? user.profileImgUrl : "/images/Profile Picture/Profile Picture.jpg"} alt="" /> {/*<!--Profilbild einfügen-->*/}
                     </div>
                     <div className="flex-1 h-40 bg-trasnparent inline-block">{/*<!--Hintergrundfarbe ändern-->*/}
                         <div className="p-5"> {/*<!--Text-Input-->*/}

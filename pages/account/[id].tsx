@@ -12,6 +12,7 @@ import Post from '@/components/Post';
 import postHook from '@/hooks/postHook';
 import postAtom from '@/atom/postAtom';
 import Loader from '@/components/Loader';
+import Image from 'next/image';
 
 type AccountProps = {
     
@@ -113,7 +114,7 @@ const Account:React.FC<AccountProps> = () => {
 
                 <div className="p-5 flex flex-col overflow-y-scroll h-auto md:max-h-[76vh] scrollbar-hide">   
                         {post.posts.map((post) => (
-                            <Post post={post} />
+                            <Post key={post.postId} post={post} />
                         ))}
                 </div>
             </div>

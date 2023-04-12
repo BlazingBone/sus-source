@@ -27,7 +27,7 @@ const Login:React.FC<loginProps> = () => {
         if(userAuth){
             router.push("/home")
         }
-    }, [user])
+    }, [user, router, userAuth])
 
     const login = async () => {
         setIsLoading(true)

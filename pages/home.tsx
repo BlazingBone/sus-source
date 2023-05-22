@@ -57,15 +57,20 @@ const Home:React.FC<homeProps> = () => {
     ];
 
     useEffect(() => {
-        if(userAuth?.uid){
-            getUserInformation(userAuth.uid);
-            getAllPosts();
+        const runInitation = async () => {
+            if(userAuth?.uid){
+                await getUserInformation(userAuth.uid);
+                await getAllPosts();
+            }
+            else if (!userAuth?.uid && loading === false){
+                router.push("/login");
+            }
             setLoaded(true);
+            console.log("loaded");
         }
-        else if (!userAuth?.uid && loading === false){
-            router.push("/login");
-        }
-    }, [user]);
+
+        runInitation();
+    }, [userAuth]);
 
     useEffect(() => {
         if(user.nitroExpireDate){
@@ -119,7 +124,7 @@ const Home:React.FC<homeProps> = () => {
         }
     };
 
-    if(!loaded){
+    if(!loaded || !posts){
         return (
             <div className='w-[100vw] h-[100vh] flex items-center justify-center'>
                 <Loader />
@@ -135,17 +140,17 @@ const Home:React.FC<homeProps> = () => {
     }
     
     return (
-    <div className="relative bg-neutral-300 dark:bg-[#121212]">
+    <div className="relative bg-neutral-300 dark:bg-[#181818]">
         <div className="flex border-b-[1px] border-neutral-900 border-opacity-10"> {/*<!--Head Bereich Anfang-->*/}
-            <div className="h-0 lg:h-36 lg:w-80 lg:inline-block lg:pt-4 lg:justify-center border-r-2 border-opacity-10 border-neutral-700 lg:bg-transparent">{/*<!--Hintergrundfarbe ändern-->*/}
-                <img className="lg:inline-block lg:h-20 lg:w-auto lg:mt-5 lg:ml-7 h-0 w-0" src="/images/Logo/SUS-Logo.jpg" alt="" />
+            <div className="h-0 lg:h-36 lg:w-80 lg:flex lg:justify-center lg:items-center border-r-2 border-opacity-10 border-neutral-700 lg:bg-transparent">{/*<!--Hintergrundfarbe ändern-->*/}
+                <img className="lg:inline-block lg:h-20 lg:w-auto lg:mt-5 lg:ml-7 h-0 w-0" src="/images/Logo/SUS_final.png" alt="" />
             </div> 
             <div className=" flex-1 inline-block w-36 bg-transparent min-w-[300px]">{/*<!--Hintergrundfarbe ändern-->*/}
                 <div className="flex">
                     <div className="h-40 inline-block bg-trasnparent">{/*<!--Hintergrundfarbe ändern-->*/}
                         <img className="w-24 h-24 rounded-full object-cover mt-8 ml-5"  src={user.profileImgUrl ? user.profileImgUrl : "/images/Profile Picture/Profile Picture.jpg"} alt="" /> {/*<!--Profilbild einfügen-->*/}
                     </div>
-                    <div className="flex-1 h-40 bg-trasnparent inline-block">{/*<!--Hintergrundfarbe ändern-->*/}
+                    <div className="flex-1 h-40 bg-transparent inline-block">{/*<!--Hintergrundfarbe ändern-->*/}
                         <div className="p-5"> {/*<!--Text-Input-->*/}
                             <input value={message} onChange={(e : React.ChangeEvent<HTMLInputElement> ) => setMessage(e.target.value)} className="w-full p-2 rounded-xl mt-8 break-words" type="text" placeholder="Anything to say?" />
                         </div>
@@ -192,12 +197,12 @@ const Home:React.FC<homeProps> = () => {
         </div>{/*<!--Head Bereich Ende-->*/}
 
         <div className="lg:flex ">{/*<!--Body Bereich Anfang-->  */}
-            <div className="lg:inline-block lg:w-80 lg:h-[87vh] lg:bg-transparent lg:p-5 w-0 h-0 overflow-y-scroll scrollbar-hide border-r-2 border-neutral-700 border-opacity-10"> {/*<!--Hintergrund kann man nich verändern-->*/}
+            <div className="lg:inline-block space-y-1 lg:w-80 lg:h-[87vh] lg:bg-transparent lg:p-5 w-0 h-0 overflow-y-scroll scrollbar-hide border-r-2 border-neutral-700 border-opacity-10"> {/*<!--Hintergrund kann man nich verändern-->*/}
                 <FriendsSearchSection friends={user.friends} />
             </div>
 
 
-            <div onScroll={handleScroll} className="inline-block flex-1 h-[87vh] min-w-[300px] p-5 overflow-y-scroll scrollbar-hide bg-transparent">
+            <div onScroll={handleScroll} className="inline-block flex-1 h-[87vh] min-w-[300px] w-full p-5 overflow-y-scroll scrollbar-hide bg-transparent">
                 {posts.posts.map((post) => (
                     <Post key={post.postId} post={post} />
                 ))}

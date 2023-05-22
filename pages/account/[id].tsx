@@ -11,8 +11,6 @@ import Imagechange from '@/components/Imagechange';
 import Post from '@/components/Post';
 import postHook from '@/hooks/postHook';
 import postAtom from '@/atom/postAtom';
-import Loader from '@/components/Loader';
-import Image from 'next/image';
 
 type AccountProps = {
     
@@ -59,13 +57,12 @@ const Account:React.FC<AccountProps> = () => {
     }
 
     return (
-    <div className='bg-neutral-300 dark:bg-[#121212]'>
-        <img className="fixed inset-0 md:object-cover " src="/images/forest-g4f76565d6_1920.jpg" alt="" />
+    <div className='bg-neutral-300 h-full w-full dark:bg-[#181818] lg:bg-[url("/images/nepal-gaca1438eb_1920.jpg")] lg:bg-no-repeat lg:bg-cover'>
         <div className="flex relative md:w-auto md:h-auto h-full w-full opacity-90">
             <div className="lg:w-80 lg:h-screen bg-transparent lg:inline-block w-0 h-0"></div>
-            <div className="inline-block flex-1 border-l-2 border-r-2 border-opacity-10 border-black bg-slate-500 dark:bg-[#121212]">
-                <div className=" flex h-52 w-full bg-neutral-300 dark:bg-[#121212]">
-                    <div className="inline-block w-full mr-5 bg-neutral-300 dark:bg-[#121212]">
+            <div className="inline-block flex-1 border-l-2 border-r-2 border-opacity-10 border-black bg-slate-500 dark:bg-[#181818]">
+                <div className="flex h-52 w-full bg-neutral-300 dark:bg-[#181818]">
+                    <div className="inline-block w-full mr-5 bg-neutral-300 dark:bg-[#181818]">
                         <div className="flex">
                             <Link href="/home">
                                 <svg className=" w-6 h-6 ml-5 mt-2 -mb-2 opacity-50 rounded-full hover:shadow-md hover:bg-neutral-200 active:bg-neutral-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -92,7 +89,7 @@ const Account:React.FC<AccountProps> = () => {
                             )}
                         <div className="flex justify-end items-center">
                             {editMode && (
-                                <button onClick={saveChanges} className=' bg-gray-100 rounded-full dark:bg-[#121212] hover:bg-neutral-200 p-1 z-10'>
+                                <button onClick={saveChanges} className=' bg-gray-100 rounded-full dark:bg-[#181818] hover:bg-neutral-200 p-1 z-10'>
                                     Save Changes
                                 </button>
                             )}
@@ -104,8 +101,8 @@ const Account:React.FC<AccountProps> = () => {
                         </div>
 
                     </div>
-                    <div className="inline-block h-full mr-5 w-64 justify-end relative dark:bg-[#121212]">
-                        <img className="h-44 w-44 relative mt-16 border-solid border-8 rounded-full object-cover  dark:border-[#222222] border-opacity" src={user.profileImgUrl ? user.profileImgUrl : "/images/Profile Picture/Profile Picture.jpg"} alt="" />
+                    <div className="mr-5 w-[300px] justify-center items-center relative dark:bg-[#181818]">
+                        <img className="h-44 w-44 absolute mt-16 border-solid border-8 rounded-full object-cover dark:border-[#222222] border-opacity" src={user.profileImgUrl ? user.profileImgUrl : "/images/Profile Picture/Profile Picture.jpg"} alt="" />
                         {userAuth?.uid === id && (
                             <PlusIcon onClick={() => setImageChange(prevValue => !prevValue)} className='bg-transparent top-16 border-8 hover:border-white dark:hover:border-[#222222] cursor-pointer absolute text-transparent h-44 w-44 rounded-full bg-opacity-75 hover:bg-neutral-300 dark:hover:bg-[#121212] hover:text-gray-200 dark:hover:text-white transition-all ease-in-out duration-300' />
                         )}

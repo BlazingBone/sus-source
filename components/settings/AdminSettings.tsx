@@ -63,7 +63,7 @@ const AdminSettings:React.FC<AdminSettingsProps> = () => {
     }
 
     return <>
-        <div className="relative inline-block w-full h-screen px-5 pt-5 bg-white dark:bg-[#121212]">
+        <div className="relative inline-block w-full h-screen px-5 pt-5 bg-white dark:bg-[#181818]">
             {selectedUser ? (
                 <>
                     <div className='flex items-center space-x-2 flex-wrap'>

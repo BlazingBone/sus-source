@@ -40,7 +40,7 @@ const SupportSettings:React.FC<SupportSettingsProps> = () => {
 
     return (
         <>
-            <div className="relative inline-block p-5 bg-white dark:bg-[#121212] w-full">
+            <div className="relative inline-block p-5 bg-white dark:bg-[#181818] w-full">
                 <div className="border-l-8 border-blue-300 pl-5 w-full mb-5">
                     <span className="font-mono">Support</span>
                 </div>              
@@ -60,13 +60,12 @@ const SupportSettings:React.FC<SupportSettingsProps> = () => {
                         <input value={someoneWantedBanned} onChange={(e) => setSomeoneWantedBanned(e.target.value)} className="bg-gray w-full p-2 rounded-md shadow-lg mb-16" type="text" placeholder="Why should this person be banned or striked?" />
                         <div className="flex w-full justify-end">
                             <button onClick={submitSupportMessage} className="w-40 h-10 border-2 border-gray-500 hover:bg-green-600 rounded-xl shadow-md"> {/*<!--Zum Admin senden-->*/}
-                                <svg className="w-6 h-6 -ml-1 pb-1 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                <svg className="w-6 h-6 -ml-1 pb-1 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                 </svg>                      
                                 <span className="inline-block">Send to Admin</span>
                             </button>
                         </div>
-
                     </div>
             </div>
         </>

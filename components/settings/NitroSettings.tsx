@@ -24,7 +24,7 @@ const NitroSettings:React.FC<NitroSettingsProps> = () => {
             <div className="border-l-8 border-blue-300 pl-5 w-full mb-5">
                 <span className="font-mono">SUS-Nitro</span>
             </div>
-            <div className="w-[300px] md:w-[500px] m-auto mt-32 flex justify-center rounded-2xl py-10 bg-white dark:bg-[#121212]">
+            <div className="w-[300px] md:w-[500px] m-auto mt-32 flex justify-center rounded-2xl py-10 bg-white dark:bg-[#181818]">
                 <div className="justify-center">
                     <img className="w-96 m-auto mb-10 " src="/images/Logo/NITRO.png" alt="" />
                     <div className="pl-7 border-b-2 border w-full">Premium Abonement für SUS</div>

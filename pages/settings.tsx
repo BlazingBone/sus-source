@@ -28,6 +28,7 @@ const Settings:React.FC<settingsProps> = () => {
     const [mobileSidebar, setMobileSidebar] = useState(false);
     const [user, setUser] = useRecoilState(userAtom);
     const [checked, setChecked] = useState(false);
+    const {setting} = router.query;
 
     useEffect(() => {
         if(userAuth?.uid){
@@ -60,13 +61,19 @@ const Settings:React.FC<settingsProps> = () => {
         }
       }, [checked]);
 
+      useEffect(() => {
+        if(router.query.setting){
+            setSettingsMode(setting as string);
+        }
+      }, [])
+
     return (
         <div className="w-full h-full flex">
-            <img className="absolute w-full h-full object-fill" src="/images/812556.jpg" alt="" />
+            <img className="absolute w-full h-full object-fill" src="/images/rough-horn-g3dfb52a00_1920.jpg" alt=""/>
                 <div className="relative w-72 h-screen pl-10 hidden md:inline-block">
                     <div className="pt-5">
                         <div>
-                            <img className="h-20 w-40 rounded-lg" src="/images/Logo/SUS-Logo.jpg" alt="" />
+                            <img className="h-20 w-[168px] rounded-lg" src="/images/Logo/SUS_final.png" alt="" />
                         </div>
                     </div>
                     <nav className="text-black">

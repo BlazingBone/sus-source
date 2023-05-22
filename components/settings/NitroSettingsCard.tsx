@@ -33,7 +33,7 @@ const NitroSettingsCard:React.FC<NitroSettingsCardProps> = () => {
     return (
     <div className="relative inline-block w-full h-screen px-5 pt-5">
         <div className="">
-            <div className="w-[300px] md:w-[600px] m-auto mt-32 flex justify-center rounded-2xl py-10 bg-white dark:bg-[#121212]">
+            <div className="w-[300px] md:w-[600px] m-auto mt-32 flex justify-center rounded-2xl py-10 bg-white dark:bg-[#181818]">
                 <div className="md:justify-center w-[300px] md:w-auto flex flex-col items-center">
                     <img className="w-30 md:w-96 m-auto mb-5 " src="images/Logo/NITRO.png" alt="" />
                     <p className='text-xl font-bold mb-2'>Color Sets</p>

@@ -19,7 +19,7 @@ const StrikeSettings:React.FC<StrikeSettingsProps> = () => {
 
     return (
         <>
-            <div className="relative inline-block w-full h-screen px-5 pt-5 bg-white dark:bg-[#121212]">
+            <div className="relative inline-block w-full h-screen px-5 pt-5 bg-white dark:bg-[#181818]">
                 <div className="border-l-8 border-blue-300 pl-5 w-full mb-5">
                     <span className="font-mono">Account Strikes</span>
                 </div>

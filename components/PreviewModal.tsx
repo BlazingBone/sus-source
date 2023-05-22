@@ -21,7 +21,7 @@ const PreviewModal:React.FC<PreviewModalProps> = ({image, video, createPost, set
 
     return (
         <div className='absolute inset-0 justify-center items-center flex'>
-            <div className='bg-gray-300 dark:bg-[#121212] shadow-md max-w-[1050px] max-h-[650px] w-full h-full flex flex-col justify-center rounded-lg'>
+            <div className='bg-gray-300 dark:bg-[#181818] shadow-md max-w-[1050px] max-h-[650px] w-full h-full flex flex-col justify-center rounded-lg'>
                     {image && (<div className='p-3'>
                         <div className='w-[100%] h-[400px] border-dotted border-2 border-white flex items-center justify-center relative'>
                             {image ? (

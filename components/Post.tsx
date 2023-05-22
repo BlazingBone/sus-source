@@ -109,13 +109,12 @@ const Post:React.FC<PostProps> = ({post}) => {
                     <div className='flex items-center' >
                         {
                             post.isNitro && (
-                                <div className=" flex -mb-1 ml-2 -mr-2">
+                                <div className="flex -mb-1 ml-2 -mr-2">
                                     <img className='h-4' src="/images/Logo/NITRO.png" />
-                                    <img className="h-4" src="/images/Icons/veryfied.png" alt="" /> {/*<!--Erst anzeigen, wenn der Nutzer Nitro gekauft hat-->*/}
                                 </div>
                             )
                         }
-                        <span className="inline-block font-mono text-gray-500 text-xs ml-2">{post.createdBy}</span>
+                        <span className="inline-block font-mono text-gray-500 text-xs ml-4">{post.createdBy}</span>
                         <span className="text-gray-500">&bull;</span>
                         <span className="inline-block font-mono text-gray-500 text-xs">{moment(new Date(post.createdAt?.seconds * 1000) ,"YYYYMMDD").fromNow()}</span>
                     </div>

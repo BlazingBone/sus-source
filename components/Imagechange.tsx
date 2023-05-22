@@ -25,7 +25,7 @@ const Imagechange:React.FC<ImagechangeProps> = ({profileImgUrl, setImageChange})
 
     return (
         <>
-            <div className=' bg-white dark:bg-[#121212] items-center justify-center p-5 rounded-lg shadow-md '>
+            <div className=' bg-white dark:bg-[#181818] items-center justify-center p-5 rounded-lg shadow-md '>
                 <div className='w-[200px] h-[200px] relative'>
                     <Image className='rounded-full' alt="Image" fill src={files ?  files : "/images/Profile Picture/Profile Picture.jpg"} />
                 </div>

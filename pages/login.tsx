@@ -69,10 +69,10 @@ const Login:React.FC<loginProps> = () => {
 
     return (
         <div className='object-center h-[88vh]'>
-            {/* <img className="absolute -mt-28 w-full h-full object-cover" src="/images/Log-In/Background/Berge.mp4" alt="" /> {/*<!--Hintergrundfarbe ändern-->*/}
+            <video className="fixed -mt-28 w-full h-full object-cover" src="/images/Berge.mp4" autoPlay={true} muted={true} controls={false} loop={true} /> {/*<!--Hintergrundfarbe ändern-->*/}
             <div className="relative w-96 rounded p-5 m-auto pt-5 bg-white dark:bg-[#222222] mt-28">
                 <div className="">
-                    <img className="w-60 m-auto" src="/images/Logo/SUS-Logo.jpg" alt="" />
+                    <img className="w-60 m-auto" src="/images/Logo/SUS_final.png" alt="" />
                 </div>
                 <div className="mt-5 mb-1 flex font-medium justify-center underline hover:cursor-default text-gray-500 dark:text-white">
                     <span>Log In</span> 

@@ -38,7 +38,7 @@ const Sidebar:React.FC<SidebarProps> = ({setOpenSidebar}) => {
 
     return (
         <div className="inset-0 z-10">
-            <div className="md:w-80 relative h-screen bg-white pt-5 dark:bg-[#121212]"> {/*<!--Hamburger Menü noch einfügen!!!!-->*/}
+            <div className="md:w-80 relative h-screen bg-white pt-5 dark:bg-[#181818]"> {/*<!--Hamburger Menü noch einfügen!!!!-->*/}
                 <div className="flex justify-center border-b-2 dark:border-b-zinc-800">
                 <img className="h-20 mb-5" src="/images/Logo/SUS-Logo.jpg" alt="" /> 
                 </div>
@@ -49,7 +49,7 @@ const Sidebar:React.FC<SidebarProps> = ({setOpenSidebar}) => {
                     <Link href="/login" onClick={() => setOpenSidebar((prevValue : boolean) => !prevValue)}>
                         <div className="h-10 w-full mt-5 pt-2 pl-5 border-l-8 dark:border-l-zinc-800 hover:border-blue-300 dark:hover:border-blue-300 hover:pl-8 ">Change Accounts</div>
                     </Link>
-                    <Link href="" onClick={() => setOpenSidebar((prevValue : boolean) => !prevValue)}>
+                    <Link href="/settings?setting=About" onClick={() => setOpenSidebar((prevValue : boolean) => !prevValue)}>
                         <div className="h-10 w-full mt-5 pt-2 pl-5 border-l-8 dark:border-l-zinc-800 hover:border-blue-300 dark:hover:border-blue-300 hover:pl-8 ">About</div>
                     </Link>
                     <Link href="/settings" onClick={() => setOpenSidebar((prevValue : boolean) => !prevValue)}>

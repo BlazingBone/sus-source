@@ -136,7 +136,7 @@ const Post:React.FC<PostProps> = ({post}) => {
             </div> {/*<!--Post Ende-->*/}
         </div>
         {commentsField && (
-            <div className='w-full h-[300px]'>
+            <div className='w-full overflow-y-scroll h-[300px] scrollbar-hide'>
                 <CommentsSection setPostComments={setPostComments} comments={postComments} postId={post.postId} />
             </div>
         )}

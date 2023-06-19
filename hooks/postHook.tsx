@@ -162,6 +162,7 @@ const postHook = () => {
             });
     
             setLastVisible(querySnapshot.docs[querySnapshot.docs.length - 1]);
+
         }
     }
 
@@ -402,7 +403,7 @@ const postHook = () => {
 
         let fetchedPosts : any = [];
 
-        const q = query(collection(db, "posts"), orderBy("likes", "desc"), limit(3));
+        const q = query(collection(db, "posts"), orderBy("likes", "desc"), limit(5));
 
         const querySnapshot = await getDocs(q);
 

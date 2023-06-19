@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import friendsHook from "../../hooks/friendsHook";
 import Image from 'next/image';
 import postHook from '@/hooks/postHook';
-import { useRecoilState_TRANSITION_SUPPORT_UNSTABLE, useRecoilValue } from 'recoil';
+import {  useRecoilValue } from 'recoil';
 import postAtom from '@/atom/postAtom';
 import Post from '../Post';
-import Comment from '../Comment';
 import userHook from '@/hooks/userHook';
 
 type AdminSettingsProps = {
@@ -21,7 +20,7 @@ const AdminSettings:React.FC<AdminSettingsProps> = () => {
     const [userRole, setUserRole] = useState("");
     const posts = useRecoilValue(postAtom);
     const {allUsers} = friendsHook();
-    const {getPostsByUserId, deleteAllDocsOfAUser, deleteDoc} = postHook();
+    const {getPostsByUserId, deleteAllDocsOfAUser, terminatePost} = postHook();
     const {changeRole, issueStrike, deleteUser} = userHook();
 
     useEffect(() => {
@@ -59,7 +58,7 @@ const AdminSettings:React.FC<AdminSettingsProps> = () => {
     }
 
     const deletePost = () => {
-        deleteDoc(selectedPost.postId);
+        terminatePost(selectedPost.postId);
     }
 
     return <>

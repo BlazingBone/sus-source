@@ -18,7 +18,7 @@ const Comment:React.FC<CommentProps> = ({comment}) => {
     return (
         <div className='w-full flex ml-[20px] mt-3'>
             <div className='w-[30px] h-[30px] rounded-full relative'>
-                <Image className='rounded-full' src={comment.commentUserImage} fill alt="Profile Image" />
+                <Image className='rounded-full' src={comment.commentUserImage ? comment.commentUserImage : "/images/Profile Picture/Profile Picture.jpg"} fill alt="Profile Image" />
             </div>
             <div>
                 <span className="inline-block font-mono text-gray-500 text-xs ml-2">{comment.createdBy}</span>

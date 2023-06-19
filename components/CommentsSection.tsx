@@ -38,7 +38,7 @@ const CommentsSection:React.FC<CommentsSectionProps> = ({comments, postId, setPo
         <div className='mt-2'>
             <div className='flex w-[100%]'>
                 <div className='w-[50px] h-[50px]  rounded-full relative'>
-                    <Image className='rounded-full' src={user.profileImgUrl} fill alt="Profile Image" />
+                    <Image className='rounded-full' src={user.profileImgUrl ? user.profileImgUrl : "/images/Profile Picture/Profile Picture.jpg"} fill alt="Profile Image" />
                 </div>
                 <div className='flex items-center border-b dark:border-zinc-500 border-gray-200 p-2 w-full'>
                     <input value={comment} onChange={(e) => setComment(e.target.value)} className='flex-1 p-2 h-[40px] rounded-full ml-2 outline-none' placeholder='Got Something to say? Leave a comment!' />

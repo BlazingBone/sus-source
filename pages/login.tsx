@@ -18,8 +18,9 @@ const Login:React.FC<loginProps> = () => {
     const [userAuth] = useAuthState(auth);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [user, setUser] = useRecoilState(userAtom);
     const [isLoading, setIsLoading] = useState(false);
+    const [user, setUser] = useRecoilState(userAtom);
+    const [error, setError] = useState("");
     const router = useRouter();
     const {onLoginUpdate} = userHook();
 
@@ -27,14 +28,16 @@ const Login:React.FC<loginProps> = () => {
         if(userAuth){
             router.push("/home")
         }
-    }, [user, router, userAuth])
+    }, [user, router]);
 
     const login = async () => {
-        setIsLoading(true)
-        const loggedInUser = await signInWithEmailAndPassword(auth ,email, password);
-        const docRef = doc(db, "users", email);
+
+        setIsLoading(true);
 
         try {    
+            const loggedInUser = await signInWithEmailAndPassword(auth ,email, password);
+            const docRef = doc(db, "users", email);
+
             await onLoginUpdate(loggedInUser.user.uid).then(() => {
                 getDoc(docRef).then((docSnap) => {
                     const docData : any = {
@@ -60,10 +63,19 @@ const Login:React.FC<loginProps> = () => {
                         nitroExpireDate: docData.nitroExpireDate
                 }));
                 });
+                setIsLoading(false);
             })
             
-        } catch (error : any) {
-            console.log(error.message);
+        } catch (err : any) {
+            if(err.message === "Firebase: Error (auth/wrong-password)."){
+                setError("Wrong Password!");
+            } else if (err.message === "Firebase: Error (auth/invalid-email)."){
+                setError("Email does not exist!");
+            } else {
+                setError("Sorry, an Error appeared, please check your Email and Password!")
+            };
+
+            setIsLoading(false);
         }
     }
 
@@ -100,6 +112,7 @@ const Login:React.FC<loginProps> = () => {
                         </Link>
                     </div>
                 </div>
+                <p className='w-full text-red-500 text-sm text-center mt-2'>{error}</p>
             </div>
         </div>
     )

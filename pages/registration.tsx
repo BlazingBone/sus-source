@@ -5,6 +5,7 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import { useRouter } from 'next/router';
 import {auth, db} from "../firebase/firebase";
 import Link from 'next/link';
+import { EllipsisVerticalIcon } from '@heroicons/react/24/solid';
 
 type registrationProps = {
     
@@ -16,9 +17,10 @@ const Registration:React.FC<registrationProps> = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
     const router = useRouter();
 
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
         if(user){
@@ -28,28 +30,47 @@ const Registration:React.FC<registrationProps> = () => {
 
     const register = async () => {
         setIsLoading(true);
-        if(email && password){
-            const userAuthData = await createUserWithEmailAndPassword(auth, email, password);
 
-            const docData = {
-                username,
-                email,
-                age: "",
-                country: "",
-                role : "User",
-                profileImgUrl: "",
-                lastLogIn: "Online",
-                posts: [],
-                friends: [],
-                post_delete_span: "3 Tage",
-                comments: [],
-                likes: [],
-                dislikes: [],
-                strikes: [],
-                nitroExpireDate: ""
+        try {
+            if(email && password && username){
+                const userAuthData = await createUserWithEmailAndPassword(auth, email, password);
+    
+                const docData = {
+                    username,
+                    email,
+                    age: "",
+                    country: "",
+                    role : "User",
+                    profileImgUrl: "",
+                    lastLogIn: "Online",
+                    posts: [],
+                    friends: [],
+                    post_delete_span: "3 Tage",
+                    comments: [],
+                    likes: [],
+                    dislikes: [],
+                    strikes: [],
+                    nitroExpireDate: ""
+                };
+                await setDoc(doc(db, "users", userAuthData.user.uid), docData);
+                router.push("/home");   
+            } else {
+                setError("Please make sure to fill out all fields!");
+                setIsLoading(false);
+            }
+        } catch (err : any) {
+            console.log(err.message)
+            if(err.message === "Firebase: Password should be at least 6 characters (auth/weak-password)."){
+                setError("Password needs to be at least 6 characters!");
+            } else if (err.message === "Firebase: Error (auth/invalid-email)."){
+                setError("Please enter a valid email with an @!");
+            } else if (err.message === "Firebase: Error (auth/email-already-in-use).") {
+                setError("Sorry, this Email is already being used! Please try a different one.")
+            } else {
+                setError("Sorry, an Error appeared, please check your Email and Password!")
             };
-            await setDoc(doc(db, "users", userAuthData.user.uid), docData);
-            router.push("/home");
+
+            setIsLoading(false);
         }
     }
 
@@ -84,6 +105,7 @@ const Registration:React.FC<registrationProps> = () => {
                 <div className="flex justify-center">
                     <div className="font-medium text-xs"></div>
                 </div>
+                <p className='w-full text-red-500 text-sm text-center mt-2'>{error}</p>
             </div>
         </div>
     )

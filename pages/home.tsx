@@ -13,7 +13,6 @@ import PreviewModal from '@/components/PreviewModal';
 import postAtom from '@/atom/postAtom';
 import Post from '@/components/Post';
 import FriendsSearchSection from '@/components/FriendsSearchSection';
-import TopPostCart from '@/components/TopPostCart';
 import TopPostsSection from '@/components/TopPostsSection';
 import { Timestamp } from 'firebase/firestore';
 import Loader from '@/components/Loader';
@@ -59,7 +58,9 @@ const Home:React.FC<homeProps> = () => {
     useEffect(() => {
         const runInitation = async () => {
             if(userAuth?.uid){
-                await getUserInformation(userAuth.uid);
+                if(!user.email){
+                    await getUserInformation(userAuth.uid);
+                }
                 await getAllPosts();
             }
             else if (!userAuth?.uid && loading === false){
@@ -133,7 +134,8 @@ const Home:React.FC<homeProps> = () => {
     };
 
     const handleScroll = (e : any) => {
-        const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+        const bottom = Math.floor(e.target.scrollHeight - e.target.scrollTop) === e.target.clientHeight;
+
         if(bottom){
             getMorePosts();
         }
@@ -185,6 +187,7 @@ const Home:React.FC<homeProps> = () => {
                 <div className="flex">
                     <div className="lg:h-full lg:flex-1 lg:justify-center lg:mt-12 lg:ml-5 h-0 w-0">
                         <p className="hidden lg:inline-block lg:font-semibold lg:text-lg lg:break-words">{user.username}</p>
+                        <br />
                         <span className="hidden lg:inline-block lg:font-extralight lg:antialiased lg:text-sm lg:from-stone-600 lg:break-words">{user.email} </span>
                     </div>
                     <div className="lg:justify-items-end">
@@ -202,7 +205,7 @@ const Home:React.FC<homeProps> = () => {
             </div>
 
 
-            <div onScroll={handleScroll} className="inline-block flex-1 h-[87vh] min-w-[300px] w-full p-5 overflow-y-scroll scrollbar-hide bg-transparent">
+            <div onScroll={handleScroll} className="inline-block flex-1 h-[86vh] min-w-[300px] w-full p-5 overflow-y-scroll scrollbar-hide bg-transparent">
                 {posts.posts.map((post) => (
                     <Post key={post.postId} post={post} />
                 ))}

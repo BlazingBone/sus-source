@@ -58,9 +58,7 @@ const Home:React.FC<homeProps> = () => {
     useEffect(() => {
         const runInitation = async () => {
             if(userAuth?.uid){
-                if(!user.email){
-                    await getUserInformation(userAuth.uid);
-                }
+                await getUserInformation(userAuth.uid);
                 await getAllPosts();
             }
             else if (!userAuth?.uid && loading === false){
